@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="gun_list">
+  <h2 class="container_h2">Spis broni</h2>
+
+          {% for gun in guns_list %}
+          <div class="list_div">
+              <div class="flex_list_div">  
+                <div class="image_list">{% if gun.gun_pic %} <img class="mig" src="{{gun.gun_pic.url}}" >
+                  {% else %}
+                  <p><b>Nie dodano zdjęcia {{gun.gun_pic}} </b></p>
+                  {% endif %}
+                </div>
+                <div class="Link_author_date">            
+                  <div class="link">
+                    <a href="{{ gun.get_absolute_url }}">{{gun.gun_name}}</a>
+                  </div>
+                  <div class="author">
+                    <p>dodany {{gun.data}} przez {{gun.author}}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+        {% endfor %}
+
+
+</div>
+
+{% endblock %}
+
+
+<!-- {{ gun.get_absolute_url }} -->

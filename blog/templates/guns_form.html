@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+<div class="container_login">
+    <h2 class = "container_h2">Dodaj nową broń</h2>
+<form method="POST" enctype="multipart/form-data">
+    <div class="form_create_gun">
+    {% csrf_token %}
+    {{ form.as_p }}
+    </div>
+    <div class="submit_div_create">
+        <p class="submit"><input type="submit" class='submit_create' value="Zapisz"></p>
+    </div>
+</form>
+</div> 
+{% endblock %}

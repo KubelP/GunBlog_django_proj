@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class = "comment_container">
+  <h2 class = "container_h2">Twój komentarz</h2>
+    <form method = 'POST'>
+        {{ form.as_p }}
+        {% csrf_token %}
+      <div class='submit_div'> 
+        <p class='submit'><input type="submit" value="Dodaj komentarz"></p>
+      </div>
+    </form>
+
+</div>
+{% endblock %}

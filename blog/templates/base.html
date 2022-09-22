@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gun Blog</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon_32x32.png' %}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon_16x16.png' %}"/>
+    <link rel="stylesheet" href="{% static 'style/mystyle.css' %}"/>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+<body>
+    <div class="body_div">
+      <h1 class="main_header">Bilbioteka mojej broni</h1>
+            
+            <div class="nav">
+                <nav class="navigation">
+        
+                    <ul class="nav_bars">
+                        {% if request.user.is_authenticated %}
+                        <li class="nav_bar"><a href="{% url 'GunBlog:guns_list' %}">Spis broni</a></li>
+                        <li class="nav_bar"><a href="{% url 'GunBlog:gun_create' %}">Dodaj nową broń</a></li>
+                        <li class="nav_bar"><a href="{% url 'GunBlog:logout' %}">Wyloguj</a></li>
+                        <li class="name">Witaj, {{request.user.username}}!</li>
+                        {% else %}
+                        <li class="nav_bar"><a href="{% url 'GunBlog:login' %}">Zaloguj się</a></li>
+                        <li class="nav_bar"><a href="{% url 'GunBlog:create' %}">Zarejestruj się</a></li>
+                        {% endif %}
+                    </ul>
+            
+                </nav>
+            </div>
+
+        <div class="allmainer">        
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+    </div>
+
+</body>
+ <!--<div class='footer'>
+  
+  <p>Jakub Piergies <a href="https://www.linkedin.com/in/jakub-piergies/">Find me on LinkedIn</a></p>
+</div> --> 
+</html>

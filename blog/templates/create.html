@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = "container_create">
+    <h2 class = "container_h2">Rejestracja użytkownika</h2>
+    <div class="form">   
+        <form method = 'POST'>
+            <div class="form_create">
+                {{ form.as_p }}
+                {% csrf_token %}
+            </div>
+            <div class="submit_div_create">
+                <p class="submit"><input type="submit" class='submit_create' value="ZAREJESTRUJ"></p>
+            </div>
+        </form>
+    </div>     
+</div>
+{% endblock %}

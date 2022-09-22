@@ -1,0 +1,6 @@
+gunblog/__pycache__/
+blog/__pycache__/
+db.sqlite3
+gunblog/secret_key.py
+passenger_wsgi.py
+gitignore.txt

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container_login">
+  <h2>Usunąć {{gun.gun_name}}?</h2>
+</div>
+     <div class='delate_confirmation_form'>
+        <form method="POST">
+            {% csrf_token %}
+         <div class='delate_confirmation'>
+          <div calss='delate_conf'><input type="submit" class='input_delate' value="Usuń"></div>
+          <div class='abort'><a class="a_abort" href="{{ gun.get_absolute_url }}">Anuluj</a></div>
+         </div>
+        </form>
+      </div>
+    
+
+
+{% endblock %}

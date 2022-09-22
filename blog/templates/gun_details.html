@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container_details">
+        <h2>{{gun_detail.gun_name}}</h2>
+        <div class='author'>dodany {{gun_detail.data}} przez {{gun_detail.author}}</div>
+    <div class="gun_details">
+        <div class="image">{% if gun_detail.gun_pic %} <img class="mig" src="{{gun_detail.gun_pic.url}}" >
+            {% else %}
+            <p><b>Nie dodano zdjęcia</b></p>
+            
+            {% endif %}
+        </div>
+        <div class = "details">
+            <div class='cart'>Nabój................{{gun_detail.caliber}}</div>
+            <div class='serial'>Numer seryjny........{{gun_detail.gun_num}}</div>
+            <div class='gun_body'>{{gun_detail.gun_body}}</div>
+            
+        </div>
+    </div>
+
+</div>
+    <div class="comments">
+        {% if gun_detail.comments.all %}
+            
+            {% for comment in gun_detail.comments.all %}
+            
+            <div class="comment_body">{{comment.comment}}</div>
+            <div class="author"><p>dodany {{gun_detail.data}} przez {{gun_detail.author}}</p></div>
+            
+            {% endfor %}
+        {% else %}
+            <div class="comment_body">Brak komentarzy...</div>
+        {% endif %}
+    
+    </div>
+
+<div class="crud_buttons">
+    <div class="comment"><a class="a_comment" href="{% url 'GunBlog:gun_comment' slug=gun_detail.slug %}">Dodaj komentarz</a></div>
+    
+    {% if request.user ==  gun_detail.author %}
+    <div class="update"><a class="a_update" href="{% url 'GunBlog:gun_update' slug=gun_detail.slug %}">Zaktualizuj</a></div>
+    <div class="delate"><a class="a_delate" href="{% url 'GunBlog:gun_delete' slug=gun_detail.slug %}">Usuń</a></div>
+    {% endif %}
+    
+</div>
+
+{% endblock %}
